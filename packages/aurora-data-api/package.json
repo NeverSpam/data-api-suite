@@ -1,6 +1,6 @@
 {
   "name": "@NeverSpam/aurora-data-api",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Aurora Serverless Data API Client that simplifies the request and response payloads.",
   "homepage": "https://github.com/NeverSpam/data-api-suite/tree/master/packages/aurora-data-api",
   "repository": {

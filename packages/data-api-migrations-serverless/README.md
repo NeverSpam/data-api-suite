@@ -10,8 +10,10 @@ This library is part of the **[Data API for Aurora Serverless Suite](https://git
 
 ## Installation
 
+Copy the `.npmrc` and the `tsconfig.json` files to the root folder of your infrastructure repo.
+
 ```sh
-$ npm install data-api-migrations-serverless --save-dev
+$ npm install @NeverSpam/data-api-migrations-serverless --save-dev
 ```
 
 ## Config
@@ -43,13 +45,11 @@ provider:
         - ${self:provider.environment.DATA_API_RESOURCE_ARN}
 
 plugins:
-	- serverless-plugin-typescript # Also works with vanila old JavaScript
-  - data-api-migrations-serverless
-  - data-api-local-serverless # Recommended for offline development
-  - serverless-offline
+  - "@NeverSpam/data-api-migrations-serverless"
 
 custom:
-  data-api-migrations:
+  DataAPIMigrations:
+    typescript: false
     local: # config for local/offline development (default stage when stage is not provided)
       region: ${self:provider.region}
       endpoint: http://localhost:8080
@@ -65,6 +65,9 @@ custom:
       secretArn: ${self:provider.environment.DATA_API_SECRET_ARN}
       resourceArn: ${self:provider.environment.DATA_API_RESOURCE_ARN}
       database: ${self:provider.environment.DATA_API_DATABASE_NAME}
+      credentials:
+        accessKeyId: example
+        secretAccessKey: example
 ```
 
 ## `custom.data-api-migrations` Config
@@ -78,7 +81,7 @@ custom:
 
 | Command | Description |
 | ------- | ----------- |
-| `sls migraitons create` | Generate a new migration file.<br />**Arguments:**<br />`--name` or `-n` : The name for the migration (Required). |
+| `sls migrations create` | Generate a new migration file.<br />**Arguments:**<br />`--name` or `-n` : The name for the migration (Required). |
 | `sls migrations apply` | Apply all pending migrations.<br />**Arguments:**<br />`--stage`: The stage (defaults to `local` if not provided). |
 | `sls migrations rollback` | Rollback the most recent (applied) migration.<br />**Arguments:**<br />`--stage`: The stage (defaults to `local` if not provided). |
 | `sls migrations status` | List the migrations that have been applied.<br />**Arguments:**<br />`--stage`: The stage (defaults to `local` if not provided). |
@@ -98,7 +101,7 @@ export const up: MigrationFn = async (dataAPI) => {
     await t.query(`
       CREATE TABLE "users" (
         "id" SERIAL PRIMARY KEY,
-        "name" varchar,
+        "name" varchar(255),
         "completedAt" timestamp,
         "createdAt" timestamp DEFAULT now(),
         "updatedAt" timestamp DEFAULT now()

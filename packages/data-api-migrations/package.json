@@ -1,15 +1,15 @@
 {
-  "name": "data-api-migrations",
+  "name": "@NeverSpam/data-api-migrations",
   "version": "1.0.0-alpha.3",
   "description": "Migrations library for Aurora Serverless Data API.",
-  "homepage": "https://github.com/marcgreenstock/data-api-suite/tree/master/packages/data-api-migrations",
+  "homepage": "https://github.com/NeverSpam/data-api-suite/tree/master/packages/data-api-migrations",
   "repository": {
     "type": "git",
-    "url": "https://github.com/marcgreenstock/data-api-suite.git",
+    "url": "https://github.com/NeverSpam/data-api-suite.git",
     "directory": "packages/data-api-migrations"
   },
   "bugs": {
-    "url": "https://github.com/marcgreenstock/data-api-suite/issues"
+    "url": "https://github.com/NeverSpam/data-api-suite/issues"
   },
   "main": "lib/index.js",
   "types": "lib/index",
@@ -24,7 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "aurora-data-api": "^1.0.0-alpha.3",
+    "@NeverSpam/aurora-data-api": "^1.0.0-alpha.3",
     "date-fns": "^2.11.0",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",

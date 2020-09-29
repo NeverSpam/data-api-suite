@@ -1,4 +1,4 @@
-import * as AuroraDataAPI from 'aurora-data-api'
+import * as AuroraDataAPI from '@NeverSpam/aurora-data-api'
 import DataAPIMigrations, { DataAPIMigrationsConfig } from './DataAPIMigrations'
 import { Migration } from './Migration'
 
